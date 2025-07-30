@@ -8,11 +8,31 @@
 import SwiftUI
 
 struct ToDoButtonView: View {
+    let ButtonTitle : String
+    let backgroundColor : Color
+    let action: () -> Void
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+        Button{
+            // Attempt to logoin
+            action()
+        }label:{
+            ZStack{
+                RoundedRectangle(cornerRadius: 15)
+                    .foregroundStyle(backgroundColor)
+                
+                Text(ButtonTitle)
+                   
+                    .font(.headline)
+                    .fontWeight(.bold)
+                    .foregroundStyle(Color.white)
+            }
+        }
+    }}
 
 #Preview {
-    ToDoButtonView()
-}
+    ToDoButtonView(ButtonTitle: "ButtonTitle", backgroundColor: .gray)
+    {
+        //
+    }
+    }
+

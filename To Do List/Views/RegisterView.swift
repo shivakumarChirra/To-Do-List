@@ -8,8 +8,40 @@
 import SwiftUI
 
 struct RegisterView: View {
+    @State var email = ""
+    @State var name = ""
+    @State var password = ""
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            HeaderView(title: "Register", subTitle: "Start organize Ypurs Do's", angle: -15, backgroundColor: .orange)
+            
+            Form{
+                TextField("Ful Name", text: $name)
+                    .textFieldStyle(DefaultTextFieldStyle())
+                    .autocapitalization(.none)
+                    .autocorrectionDisabled(true)
+                TextField("Enter E-Mail", text: $email)
+                    .autocapitalization(.none)
+                    .autocorrectionDisabled(true)
+                    .textFieldStyle(DefaultTextFieldStyle())
+                SecureField("Password", text: $password)
+                    .textFieldStyle(DefaultTextFieldStyle())
+                    .autocapitalization(.none)
+                    .autocorrectionDisabled(true)
+                ToDoButtonView(
+                    ButtonTitle: "Creat A Account ",
+                    backgroundColor: .blue
+                
+                ){
+                    //Attempt to log in
+                }
+                .padding()
+                
+            }
+            
+            .offset(y: -30)
+            Spacer()
+        }
     }
 }
 
