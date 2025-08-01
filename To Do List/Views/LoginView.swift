@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
-    @StateObject private var viewModel = LoginViewViewModel()
+    @StateObject private var viewModel = LoginViewModel()
     var body: some View {
         NavigationView {
             VStack {
@@ -17,8 +17,13 @@ struct LoginView: View {
                 
                 
 //LoginScreen
+                                }
                 
                 Form{
+                    if !viewModel.errorMessage.isEmpty {
+                        Text(viewModel.errorMessage)
+                            .foregroundStyle(.red)
+
                     TextField("Enter E-Mail", text: $viewModel.email)
                         .autocapitalization(.none)
                         .autocorrectionDisabled(true)
@@ -34,10 +39,13 @@ struct LoginView: View {
                         backgroundColor: .blue
                     
                     ){
+// here the viewModel is come form the class of viewmodellogin model view and its a function inside the class 
+                        viewModel.login()
                         //Attempt to log in
                     }
                         
-                    }.padding()
+                    }
+                        
                     
                 }
                 
